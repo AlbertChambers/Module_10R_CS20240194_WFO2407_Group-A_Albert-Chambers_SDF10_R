@@ -12,6 +12,7 @@ html, body {
 
 input,
 button {
+    cursor: pointer;
     width: 50%;
     height: 5vh;
     font-size: large;
