@@ -1,4 +1,44 @@
 html, body {
     margin: 0;
-    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 1rem;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input,
+button {
+    width: 50%;
+    height: 5vh;
+    font-size: large;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    border: none;
+}
+
+input {
+    text-align: center;
+    background-color: rgb(151, 212, 212);
+}
+
+button {
+    padding: auto auto;
+    background-color: green;
+    color: gold;
+}
+
+img {
+    width: 50%;
+}
+
+.cart-list {
+    display: grid;
+
 }
