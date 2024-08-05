@@ -25,13 +25,13 @@ if (shopFromLocalStorage) {
     render(myItems)
 }
 
-function render(leads) {
+function render(groceries) {
     let listItems = ""
-    for (let i = 0; i < leads.length; i++) {
+    for (let i = 0; i < groceries.length; i++) {
         listItems += `
             <li>
-                <a target='_blank' href='${leads[i]}'>
-                    ${leads[i]}
+                <a target='_blank' href='${groceries[i]}'>
+                    ${groceries[i]}
                 </a>
             </li>
         `
