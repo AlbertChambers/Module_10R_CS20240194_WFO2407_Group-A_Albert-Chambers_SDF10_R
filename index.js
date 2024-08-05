@@ -13,25 +13,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app)
 
-const inputFieldEl = document.getElementById("input-field");
-const addButtonEl = document.getElementById("add-button");
-
-addButtonEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value
-    console.log(inputValue)
-});
-
-
-
 let myItems = []
-const inputEl = document.getElementById("input-field")
-const inputBtn = document.getElementById("add-button")
-const cartList = document.getElementsById("cart-list")
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const shopFromLocalStorage = JSON.parse( localStorage.getItem("myItems") )
+
+if (shopFromLocalStorage) {
+    myItems = shopFromLocalStorage
+    render(myItems)
+}
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("click", function() {
+    localStorage.clear()
+    myItems = []
+    render(myItems)
+})
 
 inputBtn.addEventListener("click", function() {
     myItems.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myItems", JSON.stringify(myItems) )
+    render(myItems)
 })
-
-for (let i = 0; i < myItems.length; i++) {
-    cartList.innerHTML += "<li>" + myItems[i] + "</li>"
-}
