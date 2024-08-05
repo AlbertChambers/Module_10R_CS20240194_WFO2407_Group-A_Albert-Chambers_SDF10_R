@@ -1,29 +1,24 @@
-/*
-Challenge:
-Make it so that when you click the 'Add to cart' button, whatever is written in the input field should be console logged.
-*/
-/*
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {getDatabase,
+        ref,
+        push} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+let fireData = "https://leads-tracker-app-ad583-default-rtdb.europe-west1.firebasedatabase.app/"
 
 const firebaseConfig = {
-    databaseURL: "https://leads-tracker-app-ad583-default-rtdb.europe-west1.firebasedatabase.app/"
+    databaseURL: fireData
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app)
-*/
-let myItems = []
+const referenceInDB = ref(database, "Groceries")
+
+
 let inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
-const shopFromLocalStorage = JSON.parse( localStorage.getItem("myItems") )
-
-if (shopFromLocalStorage) {
-    myItems = shopFromLocalStorage
-    render(myItems)
-}
 
 function render(groceries) {
     let listItems = ""
@@ -38,14 +33,10 @@ function render(groceries) {
 }
 
 deleteBtn.addEventListener("click", function() {
-    localStorage.clear()
-    myItems = []
-    render(myItems)
+    
 })
 
 inputBtn.addEventListener("click", function() {
-    myItems.push(inputEl.value)
+    push(referenceInDB, inputEl.value)
     inputEl.value = ""
-    localStorage.setItem("myItems", JSON.stringify(myItems) )
-    render(myItems)
 })
