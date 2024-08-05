@@ -3,7 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getDatabase,
         ref,
         push,
-        onValue } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+        onValue,
+        remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 let fireData = "https://leads-tracker-app-ad583-default-rtdb.europe-west1.firebasedatabase.app/"
 
@@ -34,7 +35,8 @@ function render(groceries) {
 }
 
 deleteBtn.addEventListener("click", function() {
-    pop
+    remove(referenceInDB)
+    ulEl.innerHTML= ""
 })
 
 inputBtn.addEventListener("click", function() {
@@ -43,7 +45,10 @@ inputBtn.addEventListener("click", function() {
 })
 
 onValue(referenceInDB, function(snapshot) {
-    const snapshotValues = snapshot.val()
-    const groceries = Object.values(snapshotValues)
-    render(groceries)
+    const snapshotDoesExist = snapshot.exists()
+    if(snapshotDoesExist) {
+        const snapshotValues = snapshot.val()
+        const groceries = Object.values(snapshotValues)
+        render(groceries)
+    }
 })
