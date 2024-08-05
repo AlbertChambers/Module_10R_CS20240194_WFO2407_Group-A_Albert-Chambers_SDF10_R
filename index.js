@@ -30,9 +30,7 @@ function render(groceries) {
     for (let i = 0; i < groceries.length; i++) {
         listItems += `
             <li>
-                <a target='_blank' href='${groceries[i]}'>
                     ${groceries[i]}
-                </a>
             </li>
         `
     }
