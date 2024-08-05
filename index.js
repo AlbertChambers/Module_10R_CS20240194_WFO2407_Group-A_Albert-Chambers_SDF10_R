@@ -2,7 +2,7 @@
 Challenge:
 Make it so that when you click the 'Add to cart' button, whatever is written in the input field should be console logged.
 */
-
+/*
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
@@ -12,9 +12,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app)
-
+*/
 let myItems = []
-const inputEl = document.getElementById("input-el")
+let inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
